@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drums Jerry Entertainment</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,6 +17,11 @@
             color: #e0e0e0;
             background: #0a0a0a;
             overflow-x: hidden;
+        }
+
+        /* Tamil Text */
+        .tamil-text {
+            font-family: 'Noto Sans Tamil', sans-serif;
         }
 
         /* Navbar */
@@ -178,6 +183,7 @@
             box-shadow: 0 4px 15px rgba(255, 46, 99, 0.5);
             animation: bounce 2s infinite;
             transition: all 0.3s;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -225,16 +231,21 @@
         .about h2 {
             font-size: 3rem;
             font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             color: #ff2e63;
             text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         .about p {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
             font-size: 1.1rem;
             color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .about strong {
+            color: #e0e0e0;
         }
 
         /* Services Section */
@@ -317,73 +328,64 @@
         .portfolio h2 {
             font-size: 3rem;
             font-family: 'Playfair Display', serif;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: #ff2e63;
             text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .portfolio p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .portfolio-item {
+        .video-container {
             position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto 2rem;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 20px rgba(255, 46, 99, 0.3);
             opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.6s, transform 0.6s;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
         }
 
-        .portfolio-item.visible {
+        .video-container.visible {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
         }
 
-        .portfolio-item img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.85);
+        }
+
+        .social-links {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            gap: 1.5rem;
             opacity: 0;
-            transition: opacity 0.3s;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
         }
 
-        .portfolio-item:hover .portfolio-overlay {
+        .social-links.visible {
             opacity: 1;
+            transform: translateY(0);
         }
 
-        .portfolio-overlay h3 {
-            color: #ff2e63;
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-overlay p {
-            color: #e0e0e0;
-            font-size: 1rem;
+        .social-links .btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
         }
 
         /* Contact Section */
@@ -529,7 +531,7 @@
                 font-size: 2.2rem;
             }
 
-            .about p {
+            .about p, .portfolio p {
                 font-size: 1rem;
             }
 
@@ -551,17 +553,19 @@
                 font-size: 1.4rem;
             }
 
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .video-container {
+                max-width: 100%;
+                margin-bottom: 1.5rem;
             }
 
-            .portfolio-item img {
-                height: 180px;
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            .portfolio-overlay h3 {
-                font-size: 1.4rem;
+            .social-links .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
             }
 
             .contact form {
@@ -611,7 +615,9 @@
     <!-- About Section -->
     <section id="about" class="about">
         <h2>About Us</h2>
-        <p>Drums Jerry Entertainment is a visionary studio crafting world-class films, indie music, short films, and original songs. Our seamless blend of cinematic artistry and musical innovation delivers experiences that captivate and inspire.</p>
+        <p>Drums Jerry Entertainment is a dynamic creative powerhouse with over 18 years of industry leadership, founded by a seasoned entrepreneur. Operating across 23 cities with a team of 132 employees, we’ve empowered over 6000 professionals and mentored 1500+ students through our work in music, film, event production, and performing arts. Our mission is to blend cultural depth with modern creativity, delivering meaningful content that resonates globally.</p>
+        <p>We have produced acclaimed musical works including <span class="tamil-text">விவசாயி</span>, <span class="tamil-text">வெல்லப்போறான் விவசாயி</span>, <span class="tamil-text">ஈடற்றவர்</span>, and an upcoming 7-song album titled <span class="tamil-text">"உறவுகள்"</span>. In cinema, we’ve created impactful short films like <span class="tamil-text">உள்ளதை உள்ளபடி 1 & 2</span>, <span class="tamil-text">இக்கரைக்கு அக்கரை பச்சை</span>, and <span class="tamil-text">போர்நிலத்தான்</span>, with feature films <span class="tamil-text">கொடியோர்</span> and <span class="tamil-text">கடலின் மறுபக்கம்</span> currently in production. As event organizers, we proudly host large-scale cultural events such as <span class="tamil-text">வாழ்க தமிழ்</span> and <span class="tamil-text">தமிழர் திருவிழா</span>, fostering heritage and unity.</p>
+        <p>Our founder, a celebrated drummer and vocalist, has performed live on more than 50 stages over 30 years. He also plays a lead role as an actor in short films like <span class="tamil-text">காட்டிப்பிழை</span> and upcoming films including <span class="tamil-text">கொடியோர்</span> and <span class="tamil-text">கடலின் மறுபக்கம்</span>. Drums Jerry Entertainment continues to stand at the forefront of independent Tamil entertainment—where art, identity, and passion meet purpose.</p>
     </section>
 
     <!-- Services Section -->
@@ -644,28 +650,13 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <h2>Our Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Feature Film">
-                <div class="portfolio-overlay">
-                    <h3>Blockbuster Epic</h3>
-                    <p>A cinematic masterpiece with a legendary soundtrack.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a000?auto=format&fit=crop&w=600&q=80" alt="Indie Music Video">
-                <div class="portfolio-overlay">
-                    <h3>Indie Anthem</h3>
-                    <p>A music video with soulful vibes and stunning visuals.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" alt="Short Film">
-                <div class="portfolio-overlay">
-                    <h3>Short Film Gem</h3>
-                    <p>A powerful story with a custom-crafted score.</p>
-                </div>
-            </div>
+        <p>Discover our latest cinematic and musical creations on our YouTube channel and connect with us on Facebook.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/nUqE-mrUhx4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="social-links">
+            <a href="https://www.youtube.com/channel/UCoeCMF8LCIOdESv17gfWpJA" class="btn" target="_blank">Visit Our YouTube Channel</a>
+            <a href="https://www.facebook.com/jerry.gerad.3/" class="btn" target="_blank">Follow Us on Facebook</a>
         </div>
     </section>
 
@@ -729,7 +720,7 @@
         });
 
         // Intersection Observer for section animations
-        const sections = document.querySelectorAll('.about, .services, .portfolio, .contact, .portfolio-item');
+        const sections = document.querySelectorAll('.about, .services, .portfolio, .contact, .video-container, .social-links');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

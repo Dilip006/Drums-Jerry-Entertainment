@@ -1,151 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Drums Jerry Entertainment</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drums Jerry Entertainment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-    body {
-      background: #111;
-      color: #f0f0f0;
-      line-height: 1.6;
-    }
+        body {
+            color: #e0e0e0;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
 
-    header {
-      background: #1e1e1e;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        /* Navbar */
+        .navbar {
+            background: rgba(10, 10, 10, 0.9);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 0.8s ease-in-out;
+        }
 
-    .logo {
-      font-size: 1.8rem;
-      color: #ff3c3c;
-      font-weight: bold;
-    }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
+        .navbar .logo svg {
+            width: 40px;
+            height: 40px;
+            fill: #ff2e63;
+            margin-right: 0.5rem;
+            animation: pulse 1.5s infinite;
+        }
 
-    nav a {
-      color: #ccc;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+        .navbar .logo span {
+            color: #ff2e63;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+        }
 
-    nav a:hover {
-      color: #fff;
-    }
+        .navbar ul {
+            list-style: none;
+            transition: max-height 0.3s ease-in-out;
+        }
 
-    .hero {
-      background: linear-gradient(to bottom right, #1a1a1a, #000);
-      padding: 100px 40px;
-      text-align: center;
-    }
+        .navbar ul li {
+            display: inline-block;
+            margin-left: 1.5rem;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      color: #fff;
-    }
+        .navbar ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: #bbb;
-      margin-top: 10px;
-    }
+        .navbar ul li a:hover {
+            color: #ff2e63;
+            transform: scale(1.05);
+        }
 
-    .sections {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 60px 40px;
-    }
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            cursor: pointer;
+        }
 
-    .card {
-      background: #222;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
 
-    .card:hover {
-      transform: translateY(-10px);
-    }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
 
-    .card h3 {
-      color: #ff3c3c;
-      margin-bottom: 10px;
-    }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(135deg, #0a0a0a, #1c1c1c, #ff2e63);
+            overflow: hidden;
+        }
 
-    .card p {
-      color: #ccc;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 46, 99, 0.2), rgba(0, 0, 0, 0.8));
+            z-index: 1;
+        }
 
-    footer {
-      background: #1e1e1e;
-      text-align: center;
-      padding: 20px;
-      color: #666;
-      font-size: 0.9rem;
-    }
-  </style>
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 46, 99, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0.8; }
+            50% { opacity: 0.4; }
+            100% { transform: translateY(-100vh) translateX(20px); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            animation: fadeIn 1.5s ease-in;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #ff2e63;
+            animation: typing 3s steps(30), blink 0.7s step-end infinite;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            background: #ff2e63;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 46, 99, 0.5);
+            animation: bounce 2s infinite;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #e02454;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 46, 99, 0.7);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #ff2e63; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #121212, #1c1c1c);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .about.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: #ff2e63;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #b0b0b0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #0a0a0a;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .services.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .services h2 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            color: #ff2e63;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: #1c1c1c;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(255, 46, 99, 0.3);
+        }
+
+        .service-card svg {
+            width: 30px;
+            height: 30px;
+            fill: #ff2e63;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #ff2e63;
+        }
+
+        .service-card p {
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #121212, #1c1c1c);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .portfolio.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio h2 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            color: #ff2e63;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .portfolio-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: #ff2e63;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: #0a0a0a;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .contact.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            color: #ff2e63;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .contact input, .contact textarea {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: #1c1c1c;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            transition: box-shadow 0.3s;
+        }
+
+        .contact input:focus, .contact textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(255, 46, 99, 0.5);
+        }
+
+        .contact textarea {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1c1c1c;
+            color: #b0b0b0;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .navbar ul {
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: rgba(10, 10, 10, 0.95);
+                text-align: center;
+                flex-direction: column;
+            }
+
+            .navbar ul.active {
+                display: flex;
+                max-height: 250px;
+                padding: 0.5rem 0;
+            }
+
+            .navbar ul li {
+                display: block;
+                margin: 0.5rem 0;
+            }
+
+            .navbar ul li a {
+                font-size: 1.2rem;
+                padding: 0.8rem;
+            }
+
+            .navbar .logo svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .navbar .logo span {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                height: 80vh;
+                background: linear-gradient(135deg, #0a0a0a, #1c1c1c, #ff2e63);
+            }
+
+            .hero::before {
+                background: radial-gradient(circle, rgba(255, 46, 99, 0.2), rgba(0, 0, 0, 0.8));
+            }
+
+            .particles {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+                animation: typing 2.5s steps(25), blink 0.7s step-end infinite;
+            }
+
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .about, .services, .portfolio, .contact {
+                padding: 3rem 1rem;
+            }
+
+            .about h2, .services h2, .portfolio h2, .contact h2 {
+                font-size: 2.2rem;
+            }
+
+            .about p {
+                font-size: 1rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-card svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            .service-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .portfolio-item img {
+                height: 180px;
+            }
+
+            .portfolio-overlay h3 {
+                font-size: 1.4rem;
+            }
+
+            .contact form {
+                max-width: 100%;
+            }
+
+            .contact input, .contact textarea {
+                font-size: 1rem;
+                padding: 0.7rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <div class="logo">drums jerry entertainment</div>
-    <nav>
-      <ul>
-        <li><a href="#home">home</a></li>
-        <li><a href="#services">services</a></li>
-        <li><a href="#contact">contact</a></li>
-      </ul>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c0 .83-.67 1.5-1.5 1.5S8 17.33 8 16.5V12c0-.83.67-1.5 1.5-1.5S11 11.17 11 12v4.5zm4-4.5c0 .83-.67 1.5-1.5 1.5S12 12.83 12 12V7.5c0-.83.67-1.5 1.5-1.5S15 6.67 15 7.5v4.5z"/>
+            </svg>
+            <span>Drums Jerry Entertainment</span>
+        </a>
+        <span class="hamburger">☰</span>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
-  </header>
 
-  <section class="hero" id="home">
-    <h1>welcome to drums jerry entertainment</h1>
-    <p>movie production | indie music | short films | songs</p>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles" id="particles"></div>
+        <div class="hero-content">
+            <h1>Drums Jerry Entertainment</h1>
+            <p>Elevating Cinema with the Pulse of Music</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
 
-  <section class="sections" id="services">
-    <div class="card">
-      <h3>movie production</h3>
-      <p>we create bold, innovative cinema with a focus on powerful storytelling and indie spirit.</p>
-    </div>
-    <div class="card">
-      <h3>indie music</h3>
-      <p>producing unique music that breaks mainstream barriers, giving voice to true art.</p>
-    </div>
-    <div class="card">
-      <h3>short films</h3>
-      <p>pushing creativity in compact format—thought-provoking, award-winning shorts.</p>
-    </div>
-    <div class="card">
-      <h3>original songs</h3>
-      <p>original compositions, cross-genre styles, and pure emotional connection through sound.</p>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Drums Jerry Entertainment is a visionary studio crafting world-class films, indie music, short films, and original songs. Our seamless blend of cinematic artistry and musical innovation delivers experiences that captivate and inspire.</p>
+    </section>
 
-  <footer id="contact">
-    &copy; 2025 drums jerry entertainment. all rights reserved.
-  </footer>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <svg viewBox="0 0 24 24"><path d="M18 3v2H6v16h12V5h2V3H18zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
+                <h3>Movie Production</h3>
+                <p>Blockbuster films with breathtaking visuals and iconic soundtracks.</p>
+            </div>
+            <div class="service-card">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c0 .83-.67 1.5-1.5 1.5S8 17.33 8 16.5V12c0-.83.67-1.5 1.5-1.5S11 11.17 11 12v4.5zm4-4.5c0 .83-.67 1.5-1.5 1.5S12 12.83 12 12V7.5c0-.83.67-1.5 1.5-1.5S15 6.67 15 7.5v4.5z"/></svg>
+                <h3>Indie Music</h3>
+                <p>Authentic tracks that resonate with passion and creativity.</p>
+            </div>
+            <div class="service-card">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v6h-2z"/></svg>
+                <h3>Short Films</h3>
+                <p>Impactful stories enhanced by bespoke musical scores.</p>
+            </div>
+            <div class="service-card">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c0 .83-.67 1.5-1.5 1.5S8 17.33 8 16.5V12c0-.83.67-1.5 1.5-1.5S11 11.17 11 12v4.5zm4-4.5c0 .83-.67 1.5-1.5 1.5S12 12.83 12 12V7.5c0-.83.67-1.5 1.5-1.5S15 6.67 15 7.5v4.5z"/></svg>
+                <h3>Songs</h3>
+                <p>Original compositions that elevate films and captivate listeners.</p>
+            </div>
+        </div>
+    </section>
 
-</body>
-</html>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Feature Film">
+                <div class="portfolio-overlay">
+                    <h3>Blockbuster Epic</h3>
+                    <p>A cinematic masterpiece with a legendary soundtrack.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a000?auto=format&fit=crop&w=600&q=80" alt="Indie Music Video">
+                <div class="portfolio-overlay">
+                    <h3>Indie Anthem</h3>
+                    <p>A music video with soulful vibes and stunning visuals.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=600&q=80" alt="Short Film">
+                <div class="portfolio-overlay">
+                    <h3>Short Film Gem</h3>
+                    <p>A powerful story with a custom-crafted score.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Drums Jerry Entertainment. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Particle animation for hero section
+        function createParticles() {
+            if (window.innerWidth <= 768) return; // Skip on mobile
+            const particleContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = `${Math.random() * 4 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particleContainer.appendChild(particle);
+            }
+        }
+        window.addEventListener('load', createParticles);
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks for reaching out! We’ll get back to you soon.');
+            this.reset();
+        });
+
+        // Smooth scroll for navbar links
+        document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.navbar ul').classList.remove('active');
+                }
+            });
+        });
+
+        // Hamburger menu toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.navbar ul').classList.toggle('active');
+        });
+
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('.about, .services, .portfolio, .contact, .portfolio-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>

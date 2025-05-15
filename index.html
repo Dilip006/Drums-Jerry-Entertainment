@@ -35,7 +35,6 @@
     .text-\[var\(--maroon\)\] { color: var(--maroon); }
     .text-\[var\(--brown\)\] { color: var(--brown); }
     .text-\[var\(--red\)\] { color: var(--red); }
-    .hover\:text-\[var\(--red\)\]:hover { color: var(--red); }
     .border-\[var\(--maroon\)\] { border-color: var(--maroon); }
 
     .font-sans { font-family: inherit; }
@@ -50,7 +49,7 @@
 
     .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
     .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
-    .py-8 { padding-top2rem; padding-bottom: 2rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
     .px-4 { padding-left: 1rem; padding-right: 1rem; }
     .pb-2 { padding-bottom: 0.5rem; }
     .mb-4 { margin-bottom: 1rem; }
@@ -58,6 +57,7 @@
     .mb-8 { margin-bottom: 2rem; }
     .mb-12 { margin-bottom: 3rem; }
     .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
 
     .max-w-7xl { max-width: 80rem; }
     .max-w-3xl { max-width: 48rem; }
@@ -73,15 +73,64 @@
     .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
     .hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
     .transition-shadow { transition-property: box-shadow; transition-duration: 150ms; }
-    .transition-colors { transition-property: color; transition-duration: 150ms; }
+    .transition-colors { transition-property: background-color, color; transition-duration: 150ms; }
 
     .fixed { position: fixed; }
     .z-10 { z-index: 10; }
     .flex { display: flex; }
     .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
     .items-center { align-items: center; }
     .space-x-4 > * + * { margin-left: 1rem; }
+    .space-x-6 > * + * { margin-left: 1.5rem; }
     .border-b-2 { border-bottom-width: 2px; }
+
+    /* Button styling for navigation links */
+    .nav-button {
+      padding: 0.5rem 1rem;
+      background-color: var(--maroon);
+      color: var(--white);
+      border: 1px solid var(--white);
+      border-radius: 0.25rem;
+      text-decoration: none;
+      transition: background-color 150ms ease-in-out;
+    }
+
+    .nav-button:hover {
+      background-color: var(--red);
+      color: var(--white);
+    }
+
+    /* Social media and hit song button styling */
+    .social-link {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 150ms ease-in-out;
+      display: flex;
+      align-items: center;
+    }
+
+    .social-link:hover {
+      color: var(--red);
+    }
+
+    .hit-song-button {
+      padding: 0.5rem 1rem;
+      background-color: var(--red);
+      color: var(--white);
+      border: 1px solid var(--white);
+      border-radius: 0.25rem;
+      text-decoration: none;
+      transition: background-color 150ms ease-in-out;
+    }
+
+    .hit-song-button:hover {
+      background-color: var(--maroon);
+    }
+
+    .social-icon {
+      margin-right: 0.5rem;
+    }
 
     @media (min-width: 640px) {
       .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -103,11 +152,11 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold">Drums Jerry Entertainment</h1>
       <div class="space-x-4">
-        <a href="#about" class="hover:text-[var(--red)] transition-colors">About</a>
-        <a href="#music" class="hover:text-[var(--red)] transition-colors">Music</a>
-        <a href="#films" class="hover:text-[var(--red)] transition-colors">Films</a>
-        <a href="#events" class="hover:text-[var(--red)] transition-colors">Events</a>
-        <a href="#performance" class="hover:text-[var(--red)] transition-colors">Performance</a>
+        <a href="#about" class="nav-button">About</a>
+        <a href="#music" class="nav-button">Music</a>
+        <a href="#films" class="nav-button">Films</a>
+        <a href="#events" class="nav-button">Events</a>
+        <a href="#performance" class="nav-button">Performance</a>
       </div>
     </nav>
 
@@ -119,7 +168,7 @@
 
     <section id="about" class="bg-[var(--light-grey)] py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2  class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">About Us</h2>
+        <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">About Us</h2>
         <p class="text-lg text-[var(--dark-grey)] mb-6">
           Drums Jerry Entertainment is a multidisciplinary creative house specializing in music production, film, short films, live events, and performance arts. Founded by Glady Gerad, an accomplished entrepreneur with over 18 years of industry experience, our identity is rooted in innovation, authenticity, and the celebration of Tamil culture.
         </p>
@@ -245,6 +294,27 @@
             <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in an epic cinematic journey.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="connect" class="bg-[var(--maroon)] text-[var(--white)] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold mb-8">Connect With Us</h2>
+        <div class="flex justify-center space-x-6 mb-6">
+          <a href="https://www.youtube.com/channel/UCoeCMF8LCIOdESv17gfWpJA" class="social-link" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.5 6.2C23.2 5.1 22.3 4.2 21.2 3.9C19.3 3.3 12 3.3 12 3.3C12 3.3 4.7 3.3 2.8 3.9C1.7 4.2 0.8 5.1 0.5 6.2C0 8.1 0 12 0 12C0 12 0 15.9 0.5 17.8C0.8 18.9 1.7 19.8 2.8 20.1C4.7 20.7 12 20.7 12 20.7C12 20.7 19.3 20.7 21.2 20.1C22.3 19.8 23.2 18.9 23.5 17.8C24 15.9 24 12 24 12C24 12 24 8.1 23.5 6.2ZM9.6 16.2V7.8L16.2 12L9.6 16.2Z"/>
+            </svg>
+            YouTube
+          </a>
+          <a href="https://www.facebook.com/jerry.gerad.3/" class="social-link" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 12C24 5.4 18.6 0 12 0C5.4 0 0 5.4 0 12C0 17.7 4.1 22.5 9.6 23.7V15.3H6.9V12H9.6V9.6C9.6 6.9 11.4 5.1 13.8 5.1C14.9 5.1 16.2 5.4 16.2 5.4V8.4H14.7C13.5 8.4 13.2 9.3 13.2 10.2V12H16.2L15.6 15.3H13.2V23.7C18.6 22.5 24 17.7 24 12Z"/>
+            </svg>
+            Facebook
+          </a>
+        </div>
+        <a href="https://www.youtube.com/watch?v=nUqE-mrUhx4" class="hit-song-button" target="_blank" rel="noopener noreferrer">Listen to Our Current Hit Song</a>
       </div>
     </section>
 

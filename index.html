@@ -1,1000 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drums Jerry Entertainment</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Montserrat:wght@600&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            color: #111827;
-            background: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Tamil Text */
-        .tamil-text {
-            font-family: 'Noto Sans Tamil', sans-serif;
-        }
-
-        /* Navbar (Mobile-First) */
-        .navbar {
-            background: rgba(243, 244, 246, 0.97);
-            padding: 0.8rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: slideDown 0.4s ease-in-out;
-        }
-
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .navbar .logo svg {
-            width: 44px;
-            height: 44px;
-            fill: #1e3a8a;
-            margin-right: 0.5rem;
-            animation: holoPulse 2s infinite ease-in-out;
-            will-change: transform;
-            transition: fill 0.3s;
-        }
-
-        .navbar .logo:hover svg {
-            fill: #3b82f6;
-        }
-
-        @keyframes holoPulse {
-            0%, 100% { transform: scale(1) rotateX(0deg) rotateY(0deg); }
-            50% { transform: scale(1.15) rotateX(5deg) rotateY(5deg); }
-        }
-
-        .navbar .logo span {
-            color: #1e3a8a;
-            font-size: 1.6rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            display: inline-flex;
-        }
-
-        .navbar .logo span .letter {
-            opacity: 0;
-            animation: cyberFlicker 1s ease-in-out forwards;
-        }
-
-        .navbar .logo span .letter:nth-child(1) { animation-delay: 0.03s; }
-        .navbar .logo span .letter:nth-child(2) { animation-delay: 0.06s; }
-        .navbar .logo span .letter:nth-child(3) { animation-delay: 0.09s; }
-        .navbar .logo span .letter:nth-child(4) { animation-delay: 0.12s; }
-        .navbar .logo span .letter:nth-child(5) { animation-delay: 0.15s; }
-        .navbar .logo span .letter:nth-child(6) { animation-delay: 0.18s; }
-        .navbar .logo span .letter:nth-child(7) { animation-delay: 0.21s; }
-        .navbar .logo span .letter:nth-child(8) { animation-delay: 0.24s; }
-        .navbar .logo span .letter:nth-child(9) { animation-delay: 0.27s; }
-        .navbar .logo span .letter:nth-child(10) { animation-delay: 0.3s; }
-        .navbar .logo span .letter:nth-child(11) { animation-delay: 0.33s; }
-        .navbar .logo span .letter:nth-child(12) { animation-delay: 0.36s; }
-        .navbar .logo span .letter:nth-child(13) { animation-delay: 0.39s; }
-        .navbar .logo span .letter:nth-child(14) { animation-delay: 0.42s; }
-        .navbar .logo span .letter:nth-child(15) { animation-delay: 0.45s; }
-        .navbar .logo span .letter:nth-child(16) { animation-delay: 0.48s; }
-        .navbar .logo span .letter:nth-child(17) { animation-delay: 0.51s; }
-        .navbar .logo span .letter:nth-child(18) { animation-delay: 0.54s; }
-
-        @keyframes cyberFlicker {
-            0% { opacity: 0; }
-            40% { opacity: 0.6; }
-            50% { opacity: 0.2; }
-            60% { opacity: 0.8; }
-            100% { opacity: 1; }
-        }
-
-        .navbar .logo span:hover {
-            color: #3b82f6;
-        }
-
-        .navbar ul {
-            display: none;
-            max-height: 0;
-            overflow: hidden;
-            width: 100%;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: rgba(243, 244, 246, 0.97);
-            text-align: center;
-            flex-direction: column;
-            transition: max-height 0.3s ease-in-out;
-        }
-
-        .navbar ul.active {
-            display: flex;
-            max-height: 260px;
-            padding: 0.4rem 0;
-        }
-
-        .navbar ul li {
-            display: block;
-            margin: 0.5rem 0;
-        }
-
-        .navbar ul li a {
-            color: #111827;
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 0.8rem;
-            display: block;
-            transition: color 0.3s, transform 0.3s;
-            min-height: 44px;
-        }
-
-        .navbar ul li a:hover, .navbar ul li a:active {
-            color: #93c5fd;
-            transform: scale(1.1);
-        }
-
-        .hamburger {
-            display: block;
-            font-size: 1.8rem;
-            color: #1e3a8a;
-            cursor: pointer;
-            transition: transform 0.3s, color 0.3s;
-            padding: 0.4rem;
-            min-width: 44px;
-            min-height: 44px;
-        }
-
-        .hamburger.active {
-            transform: rotate(90deg);
-            color: #3b82f6;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 60vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #111827;
-            background: #ffffff;
-            overflow: hidden;
-        }
-
-        .hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-
-        .hero-visualizer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 80px;
-            display: none;
-            z-index: 2;
-        }
-
-        .visualizer-bar {
-            position: absolute;
-            bottom: 0;
-            width: 8px;
-            background: #3b82f6;
-            animation: visualizer 1.5s infinite ease-in-out;
-        }
-
-        @keyframes visualizer {
-            0%, 100% { height: 20px; }
-            50% { height: 60px; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            animation: fadeIn 0.4s ease-in;
-            padding: 0 0.8rem;
-        }
-
-        .hero-content h1 {
-            font-size: calc(6vw + 0.8rem);
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 0.8rem;
-            color: #1e3a8a;
-            max-width: 95%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-content p {
-            font-size: min(0.9rem, 4vw);
-            margin-bottom: 1.2rem;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 2px solid #1e3a8a;
-            animation: typing 1.6s steps(25), blink 0.5s step-end infinite;
-            color: #111827;
-        }
-
-        .btn {
-            padding: 0.7rem 1.8rem;
-            background: #1e3a8a;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 24px;
-            font-size: min(0.9rem, 4vw);
-            font-weight: 700;
-            transition: all 0.3s;
-            display: inline-block;
-            min-height: 44px;
-            will-change: transform;
-        }
-
-        .btn:hover, .btn:active {
-            background: #3b82f6;
-            transform: scale(1.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: #1e3a8a; }
-        }
-
-        /* About Section */
-        .about {
-            padding: 2rem 0.8rem;
-            text-align: center;
-            background: #ffffff;
-            border: 2px solid #93c5fd;
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .about.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about h2 {
-            font-size: 2rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .about p {
-            max-width: 95%;
-            margin: 0 auto 0.8rem;
-            font-size: 0.9rem;
-            color: #111827;
-            line-height: 1.5;
-        }
-
-        .about strong {
-            color: #0a0a0a;
-            font-weight: 700;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 2rem 0.8rem;
-            text-align: center;
-            background: #ffffff;
-            border: 2px solid #93c5fd;
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .services.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .services h2 {
-            font-size: 2rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: #ffffff;
-            padding: 1rem;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card svg {
-            width: 24px;
-            height: 24px;
-            fill: #1e3a8a;
-            margin-bottom: 0.3rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-            color: #1e3a8a;
-            font-weight: 800;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .service-card p {
-            color: #111827;
-            font-size: 0.85rem;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 2rem 0.8rem;
-            background: #ffffff;
-            text-align: center;
-            border: 2px solid #93c5fd;
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .portfolio.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portfolio h2 {
-            font-size: 2rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .portfolio p {
-            font-size: 0.9rem;
-            color: #111827;
-            margin-bottom: 1rem;
-            max-width: 95%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 0 auto 1rem;
-            border-radius: 10px;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .video-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .social-links.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .social-links .btn {
-            padding: 0.7rem 1.4rem;
-            font-size: min(0.9rem, 4vw);
-            min-height: 44px;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 2rem 0.8rem;
-            text-align: center;
-            background: #ffffff;
-            border: 2px solid #93c5fd;
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .contact.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .contact h2 {
-            font-size: 2rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .contact form {
-            max-width: 100%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0.7rem;
-        }
-
-        .contact input, .contact textarea {
-            padding: 0.7rem;
-            border: none;
-            border-radius: 6px;
-            background: #e5e7eb;
-            color: #111827;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        .contact input:focus, .contact textarea:focus {
-            outline: none;
-            background: #d1d5db;
-        }
-
-        .contact textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        /* Footer */
-        .footer {
-            background: #f3f4f6;
-            color: #111827;
-            text-align: center;
-            padding: 0.8rem;
-            font-size: 0.8rem;
-        }
-
-        /* Responsive Adjustments for Small Screens */
-        @media (max-width: 480px) {
-            .navbar {
-                padding: 0.6rem;
-            }
-
-            .navbar .logo svg {
-                width: 40px;
-                height: 40px;
-            }
-
-            .navbar .logo span {
-                font-size: 1.4rem;
-            }
-
-            .hamburger {
-                font-size: 1.6rem;
-                padding: 0.3rem;
-            }
-
-            .navbar ul li a {
-                font-size: 1.1rem;
-                padding: 0.7rem;
-            }
-
-            .hero {
-                height: 55vh;
-            }
-
-            .hero-content h1 {
-                font-size: calc(5.5vw + 0.7rem);
-            }
-
-            .hero-content p {
-                font-size: min(0.85rem, 3.8vw);
-            }
-
-            .btn {
-                padding: 0.6rem 1.6rem;
-                font-size: min(0.85rem, 3.8vw);
-            }
-
-            .about, .services, .portfolio, .contact {
-                padding: 1.8rem 0.7rem;
-            }
-
-            .about h2, .services h2, .portfolio h2, .contact h2 {
-                font-size: 1.8rem;
-            }
-
-            .about p, .portfolio p {
-                font-size: 0.85rem;
-            }
-
-            .service-card {
-                padding: 0.9rem;
-            }
-
-            .service-card svg {
-                width: 22px;
-                height: 22px;
-            }
-
-            .service-card h3 {
-                font-size: 1.2rem;
-            }
-
-            .service-card p {
-                font-size: 0.8rem;
-            }
-
-            .social-links .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: min(0.85rem, 3.8vw);
-            }
-
-            .contact input, .contact textarea {
-                padding: 0.6rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Desktop Styles */
-        @media (min-width: 769px) {
-            .navbar {
-                padding: 1.2rem 2rem;
-                flex-wrap: nowrap;
-            }
-
-            .navbar .logo svg {
-                width: 56px;
-                height: 56px;
-                animation: orbitGlow 5s infinite ease-in-out;
-            }
-
-            @keyframes orbitGlow {
-                0% { transform: rotate(0deg) scale(1); }
-                33% { transform: rotate(120deg) scale(1.3); }
-                66% { transform: rotate(240deg) scale(1.2); }
-                100% { transform: rotate(360deg) scale(1); }
-            }
-
-            .navbar .logo span {
-                font-size: 2.4rem;
-            }
-
-            .navbar .logo span .letter {
-                animation: holoWave 1.8s ease-in-out forwards;
-            }
-
-            @keyframes holoWave {
-                0% { opacity: 0; transform: translateY(15px); }
-                50% { opacity: 0.7; transform: translateY(0); }
-                75% { opacity: 0.4; }
-                100% { opacity: 1; transform: translateY(0); }
-            }
-
-            .navbar ul {
-                display: flex;
-                max-height: none;
-                position: static;
-                background: none;
-                flex-direction: row;
-            }
-
-            .navbar ul li {
-                display: inline-block;
-                margin-left: 1.8rem;
-            }
-
-            .navbar ul li a {
-                font-size: 1.2rem;
-                padding: 0.6rem;
-                min-height: 44px;
-            }
-
-            .hamburger {
-                display: none;
-            }
-
-            .hero {
-                height: 90vh;
-            }
-
-            .hero-visualizer {
-                display: block;
-                height: 120px;
-            }
-
-            .visualizer-bar {
-                width: 12px;
-            }
-
-            .hero-content h1 {
-                font-size: 4.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.3rem;
-                animation: typing 2.5s steps(30), blink 0.6s step-end infinite;
-            }
-
-            .btn {
-                padding: 1rem 2.5rem;
-                font-size: 1.1rem;
-            }
-
-            .about, .services, .portfolio, .contact {
-                padding: 4rem 2rem;
-            }
-
-            .about h2, .services h2, .portfolio h2, .contact h2 {
-                font-size: 2.8rem;
-            }
-
-            .about p, .portfolio p {
-                font-size: 1rem;
-            }
-
-            .service-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.8rem;
-                max-width: 1200px;
-            }
-
-            .service-card {
-                padding: 1.8rem;
-            }
-
-            .service-card svg {
-                width: 30px;
-                height: 30px;
-            }
-
-            .service-card h3 {
-                font-size: 1.6rem;
-            }
-
-            .service-card p {
-                font-size: 0.95rem;
-            }
-
-            .video-container {
-                max-width: 900px;
-                margin-bottom: 1.8rem;
-            }
-
-            .social-links {
-                flex-direction: row;
-                gap: 1.2rem;
-            }
-
-            .social-links .btn {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
-            }
-
-            .contact form {
-                max-width: 700px;
-            }
-
-            .contact input, .contact textarea {
-                padding: 0.9rem;
-                font-size: 1rem;
-            }
-
-            .footer {
-                padding: 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
-            .hero-canvas { display: none; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drums Jerry Entertainment</title>
+  <style>
+    :root {
+      --maroon: #800000;
+      --light-grey: #D1D5DB;
+      --white: #FFFFFF;
+      --brown: #8B4513;
+      --red: #FF0000;
+      --black: #000000;
+      --dark-grey: #374151;
+    }
+
+    /* Tailwind CSS compiled output (subset for this website) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+
+    .bg-\[var\(--light-grey\)\] { background-color: var(--light-grey); }
+    .bg-\[var\(--white\)\] { background-color: var(--white); }
+    .bg-\[var\(--maroon\)\] { background-color: var(--maroon); }
+    .bg-\[var\(--black\)\] { background-color: var(--black); }
+    .text-\[var\(--dark-grey\)\] { color: var(--dark-grey); }
+    .text-\[var\(--white\)\] { color: var(--white); }
+    .text-\[var\(--maroon\)\] { color: var(--maroon); }
+    .text-\[var\(--brown\)\] { color: var(--brown); }
+    .text-\[var\(--red\)\] { color: var(--red); }
+    .hover\:text-\[var\(--red\)\]:hover { color: var(--red); }
+    .border-\[var\(--maroon\)\] { border-color: var(--maroon); }
+
+    .font-sans { font-family: inherit; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .text-center { text-align: center; }
+
+    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+    .py-8 { padding-top2rem; padding-bottom: 2rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .pb-2 { padding-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-2 { margin-top: 0.5rem; }
+
+    .max-w-7xl { max-width: 80rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .w-full { width: 100%; }
+
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .gap-6 { gap: 1.5rem; }
+    .p-6 { padding: 1.5rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    .hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    .transition-shadow { transition-property: box-shadow; transition-duration: 150ms; }
+    .transition-colors { transition-property: color; transition-duration: 150ms; }
+
+    .fixed { position: fixed; }
+    .z-10 { z-index: 10; }
+    .flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .items-center { align-items: center; }
+    .space-x-4 > * + * { margin-left: 1rem; }
+    .border-b-2 { border-bottom-width: 2px; }
+
+    @media (min-width: 640px) {
+      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    @media (min-width: 768px) {
+      .md\:text-5xl { font-size: 3rem; line-height: 1; }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+  </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <a href="#" class="logo">
-            <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="7" fill="none" stroke="#1e3a8a" stroke-width="2"/>
-                <path d="M10 10h4M12 8v8"/>
-                <path d="M18 6c1 2 0 4-2 4"/>
-            </svg>
-            <span>
-                <span class="letter">D</span><span class="letter">r</span><span class="letter">u</span><span class="letter">m</span><span class="letter">s</span>
-                <span class="letter"> </span>
-                <span class="letter">J</span><span class="letter">e</span><span class="letter">r</span><span class="letter">r</span><span class="letter">y</span>
-                <span class="letter"> </span>
-                <span class="letter">E</span><span class="letter">n</span><span class="letter">t</span><span class="letter">e</span><span class="letter">r</span><span class="letter">t</span><span class="letter">a</span><span class="letter">i</span><span class="letter">n</span><span class="letter">m</span><span class="letter">e</span><span class="letter">n</span><span class="letter">t</span>
-            </span>
-        </a>
-        <span class="hamburger">☰</span>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+<body class="bg-[var(--light-grey)] text-[var(--dark-grey)] font-sans">
+  <nav class="bg-[var(--maroon)] text-[var(--white)] fixed w-full z-10 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Drums Jerry Entertainment</h1>
+      <div class="space-x-4">
+        <a href="#about" class="hover:text-[var(--red)] transition-colors">About</a>
+        <a href="#music" class="hover:text-[var(--red)] transition-colors">Music</a>
+        <a href="#films" class="hover:text-[var(--red)] transition-colors">Films</a>
+        <a href="#events" class="hover:text-[var(--red)] transition-colors">Events</a>
+        <a href="#performance" class="hover:text-[var(--red)] transition-colors">Performance</a>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <canvas class="hero-canvas" id="musicCodeCanvas"></canvas>
-        <div class="hero-visualizer" id="visualizer"></div>
-        <div class="hero-content">
-            <h1>Drums Jerry Entertainment</h1>
-            <p>Elevating Cinema with the Pulse of Music</p>
-            <a href="#contact" class="btn">Get in Touch</a>
+  <div class="pt-16">
+    <header class="bg-[var(--black)] text-[var(--white)] py-20 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Drums Jerry Entertainment</h1>
+      <p class="text-xl max-w-3xl mx-auto">Celebrating Tamil Culture through Music, Film, and Performance Arts</p>
+    </header>
+
+    <section id="about" class="bg-[var(--light-grey)] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2  class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">About Us</h2>
+        <p class="text-lg text-[var(--dark-grey)] mb-6">
+          Drums Jerry Entertainment is a multidisciplinary creative house specializing in music production, film, short films, live events, and performance arts. Founded by Glady Gerad, an accomplished entrepreneur with over 18 years of industry experience, our identity is rooted in innovation, authenticity, and the celebration of Tamil culture.
+        </p>
+        <p class="text-lg text-[var(--dark-grey)]">
+          Beyond content creation, we are passionate about identifying and nurturing new talents. Through our productions and events, we actively provide opportunities for emerging artists, musicians, and performers to showcase their abilities and build their careers. We believe in storytelling that uplifts voices, empowers communities, and preserves cultural heritage through modern artistic expression.
+        </p>
+      </div>
+    </section>
+
+    <section id="music" class="bg-[var(--white)] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">Music Production</h2>
+        <p class="text-lg text-[var(--dark-grey)] mb-6">We produce original soundtracks that blend cultural richness with modern sound design.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Farmer <span class="text-[var(--dark-grey)]">[விவசாயி]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A heartfelt tribute to the backbone of our society.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Winning Farmer <span class="text-[var(--dark-grey)]">[வெல்லப்போறான் விவசாயி]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">An inspiring anthem of triumph and resilience.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Matchless One <span class="text-[var(--dark-grey)]">[ஈடற்றவர்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A powerful track celebrating uniqueness.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Relationships <span class="text-[var(--dark-grey)]">[உறவுகள்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">An upcoming 7-track album exploring human connections.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Us</h2>
-        <p>Drums Jerry Entertainment is a dynamic creative powerhouse is founded by visionary artist and entrepreneur Mr. Glady Gerad, our mission is to merge cultural richness with contemporary expression—crafting powerful content that connects deeply with audiences worldwide.</p>
-        <p>Our music portfolio features critically acclaimed works such as <span class="tamil-text">விவசாயி</span>, <span class="tamil-text">வெல்லப்போறான் விவசாயி</span>, <span class="tamil-text">ஈடற்றவர்</span>, and the upcoming 7-track album <span class="tamil-text">உறவுகள்</span>. In film, we’ve brought to life impactful short films including <span class="tamil-text">உள்ளதை உள்ளபடி 1 & 2</span>, <span class="tamil-text">இக்கரைக்கு அக்கரை பச்சை</span>, <span class="tamil-text">போர்நிலத்தான்</span>, and are currently producing full-length features <span class="tamil-text">கொடியோர்</span> and <span class="tamil-text">கடலின் மறுபக்கம்</span>. As proud cultural ambassadors, we organize major Tamil heritage events like <span class="tamil-text">வாழ்க தமிழ்</span> and <span class="tamil-text">தமிழர் திருவிழா</span>, celebrating identity and unity through community. We are also passionate about discovering and nurturing new talent—giving aspiring musicians, actors, and creators the platform and opportunity to shine. Our production house serves as a launchpad for fresh voices and emerging artists across the Tamil creative landscape.</p>
-        <p>Our founder—a celebrated <strong>drummer</strong>, <strong>singer</strong>, and <strong>actor</strong>—has captivated audiences in over 50+ live performances across three decades. His on-screen presence also shines in short films like <span class="tamil-text">காட்டிப்பிழை</span> and leading roles in the upcoming titles <span class="tamil-text">கொடியோர்</span> and <span class="tamil-text">கடலின் மறுபக்கம்</span>. At Drums Jerry Entertainment, we continue to push the boundaries of independent Tamil media—where art meets purpose, and every project echoes our commitment to culture, creativity, and storytelling.</p>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <svg viewBox="0 0 24 24"><path d="M18 3v2H6v16h12V5h2V3H18zM8 7h8v2H8V7zm0 4h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>
-                <h3>Movie Production</h3>
-                <p>Blockbuster films with breathtaking visuals and iconic soundtracks.</p>
+    <section id="films" class="bg-[var(--light-grey)] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">Film Production</h2>
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold text-[var(--brown)] mb-4">Short Films</h3>
+          <p class="text-lg text-[var(--dark-grey)] mb-6">Our short films capture powerful human stories, rooted in emotion and social relevance.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">As It Is – Part 1 & 2 <span class="text-[var(--dark-grey)]">[உள்ளதை உள்ளபடி]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A raw exploration of truth and reality.</p>
             </div>
-            <div class="service-card">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c0 .83-.67 1.5-1.5 1.5S8 17.33 8 16.5V12c0-.83.67-1.5 1.5-1.5S11 11.17 11 12v4.5zm4-4.5c0 .83-.67 1.5-1.5 1.5S12 12.83 12 12V7.5c0-.83.67-1.5 1.5-1.5S15 6.67 15 7.5v4.5z"/></svg>
-                <h3>Indie Music</h3>
-                <p>Authentic tracks that resonate with passion and creativity.</p>
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">This Shore, That Shore is Greener <span class="text-[var(--dark-grey)]">[இக்கரைக்கு அக்கரை பச்சை]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A story of longing and perspective.</p>
             </div>
-            <div class="service-card">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-12h2v6h-2z"/></svg>
-                <h3>Short Films</h3>
-                <p>Impactful stories enhanced by bespoke musical scores.</p>
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Election is Coming <span class="text-[var(--dark-grey)]">[தேர்தல் வருகிறது]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A satirical take on political anticipation.</p>
             </div>
-            <div class="service-card">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c0 .83-.67 1.5-1.5 1.5S8 17.33 8 16.5V12c0-.83.67-1.5 1.5-1.5S11 11.17 11 12v4.5zm4-4.5c0 .83-.67 1.5-1.5 1.5S12 12.83 12 12V7.5c0-.83.67-1.5 1.5-1.5S15 6.67 15 7.5v4.5z"/></svg>
-                <h3>Songs</h3>
-                <p>Original compositions that elevate films and captivate listeners.</p>
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Saurashtram Wedding <span class="text-[var(--dark-grey)]">[செளரசக்கத்தின் திருமணம்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A vibrant cultural celebration.</p>
             </div>
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Mismatched Ringtone <span class="text-[var(--dark-grey)]">[பொருந்தா ரெலிவோன்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A humorous take on modern disconnects.</p>
+            </div>
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">War Zone <span class="text-[var(--dark-grey)]">[போர்நிலத்தான்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A gripping tale of conflict and survival.</p>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <h2>Our Portfolio</h2>
-        <p>Discover our latest cinematic and musical creations on our YouTube channel and connect with us on Facebook.</p>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/nUqE-mrUhx4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div>
+          <h3 class="text-2xl font-semibold text-[var(--brown)] mb-4">Feature Films (Upcoming)</h3>
+          <p class="text-lg text-[var(--dark-grey)] mb-6">We are developing impactful Tamil cinema with bold themes and strong storytelling.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">The Ruthless One <span class="text-[var(--dark-grey)]">[கொடியோர்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A bold narrative of power and morality.</p>
+            </div>
+            <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறுபக்கம்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">An epic tale of journey and discovery.</p>
+            </div>
+          </div>
         </div>
-        <div class="social-links">
-            <a href="https://www.youtube.com/channel/UCoeCMF8LCIOdESv17gfWpJA" class="btn" target="_blank">Visit Our YouTube Channel</a>
-            <a href="https://www.facebook.com/jerry.gerad.3/" class="btn" target="_blank">Follow Us on Facebook</a>
+      </div>
+    </section>
+
+    <section id="events" class="bg-[var(--white)] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">Event Management</h2>
+        <p class="text-lg text-[var(--dark-grey)] mb-6">We organize vibrant cultural events that bring people together and highlight Tamil heritage.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Long Live Tamil <span class="text-[var(--dark-grey)]">[வாழ்க தமிழ்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A celebration of Tamil language and culture.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Tamil Fest <span class="text-[var(--dark-grey)]">[தமிழர் திருவிழா]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A grand festival showcasing Tamil traditions.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn">Send Message</button>
-        </form>
+    <section id="performance" class="bg-[var(--light-grey)] py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">Live Performance & Acting</h2>
+        <p class="text-lg text-[var(--dark-grey)] mb-6">
+          Our founder, Glady Gerad, is a seasoned drummer and vocalist with over 30 years of experience, having performed on more than 50 stages worldwide. His acting portfolio includes powerful screen presence in both short and upcoming feature films.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Marked Mistake <span class="text-[var(--dark-grey)]">[காட்டிப்பிழை]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A compelling role in a dramatic short film.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">War Zone <span class="text-[var(--dark-grey)]">[போர்நிலத்தான்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A intense performance in a conflict-driven narrative.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Ruthless One <span class="text-[var(--dark-grey)]">[கொடியோர்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in a bold feature film.</p>
+          </div>
+          <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறுபக்கம்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in an epic cinematic journey.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer class="bg-[var(--maroon)] text-[var(--white)] py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p>© 2025 Drums Jerry Entertainment. All rights reserved.</p>
+        <p class="mt-2">Contact: info@drumsjerry.com</p>
+      </div>
     </footer>
-
-    <script>
-        // Music Code Falling Animation
-        function initMusicCodeFall() {
-            const canvas = document.getElementById('musicCodeCanvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            const symbols = ['♫', '♪', '0', '1'];
-            const colors = ['#1e3a8a', '#3b82f6', '#93c5fd'];
-            let lastFrameTime = performance.now();
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = document.querySelector('.hero').offsetHeight;
-            }
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * -canvas.height;
-                    this.speed = 1 + Math.random() * 2;
-                    this.drift = Math.random() * 0.2 - 0.1;
-                    this.size = 18 + Math.random() * 12;
-                    this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
-                    this.color = colors[Math.floor(Math.random() * colors.length)];
-                    this.opacity = 0.4 + Math.random() * 0.3;
-                }
-
-                update() {
-                    this.y += this.speed;
-                    this.x += this.drift;
-                    if (this.y > canvas.height) {
-                        this.y = -this.size;
-                        this.x = Math.random() * canvas.width;
-                    }
-                }
-
-                draw() {
-                    ctx.font = `${this.size}px Montserrat`;
-                    ctx.fillStyle = this.color;
-                    ctx.globalAlpha = this.opacity;
-                    ctx.fillText(this.symbol, this.x, this.y);
-                    ctx.globalAlpha = 1;
-                }
-            }
-
-            function initParticles() {
-                particles = [];
-                const count = window.innerWidth <= 768 ? 15 : 50;
-                for (let i = 0; i < count; i++) {
-                    particles.push(new Particle());
-                }
-            }
-
-            function animate(currentTime) {
-                const deltaTime = currentTime - lastFrameTime;
-                if (deltaTime > 16.67) { // Cap at ~60fps
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    particles.forEach(particle => {
-                        particle.update();
-                        particle.draw();
-                    });
-                    lastFrameTime = currentTime;
-                }
-                requestAnimationFrame(animate);
-            }
-
-            initParticles();
-            requestAnimationFrame(animate);
-            window.addEventListener('resize', initParticles);
-        }
-
-        // Music Visualizer for Hero (Desktop Only)
-        function createVisualizer() {
-            if (window.innerWidth <= 768) return;
-            const visualizer = document.getElementById('visualizer');
-            visualizer.innerHTML = '';
-            for (let i = 0; i < 10; i++) {
-                const bar = document.createElement('div');
-                bar.classList.add('visualizer-bar');
-                bar.style.left = `${i * 10}%`;
-                bar.style.animationDelay = `${i * 0.2}s`;
-                visualizer.appendChild(bar);
-            }
-        }
-        window.addEventListener('load', () => {
-            initMusicCodeFall();
-            createVisualizer();
-        });
-
-        // Form submission handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thanks for reaching out! We’ll get back to you soon.');
-            this.reset();
-        });
-
-        // Smooth scroll for navbar links
-        document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                if (window.innerWidth <= 768) {
-                    document.querySelector('.navbar ul').classList.remove('active');
-                    document.querySelector('.hamburger').classList.remove('active');
-                }
-            });
-        });
-
-        // Hamburger menu toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.navbar ul').classList.toggle('active');
-        });
-
-        // Logo touch interaction (mobile)
-        document.querySelector('.navbar .logo').addEventListener('touchstart', function() {
-            this.style.transform = 'scale(1.05)';
-        });
-        document.querySelector('.navbar .logo').addEventListener('touchend', function() {
-            this.style.transform = 'scale(1)';
-        });
-
-        // Intersection Observer for section animations
-        const sections = document.querySelectorAll('.about, .services, .portfolio, .contact, .video-container, .social-links');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        sections.forEach(section => observer.observe(section));
-    </script>
+  </div>
 </body>
 </html>

@@ -26,7 +26,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     }
 
-    /* Utility classes (unchanged) */
+    /* Utility classes */
     .bg-\[var\(--light-grey\)\] { background-color: var(--light-grey); }
     .bg-\[var\(--white\)\] { background-color: var(--white); }
     .bg-\[var\(--maroon\)\] { background-color: var(--maroon); }
@@ -105,6 +105,14 @@
       color: var(--white);
     }
 
+    /* Logo styling */
+    .nav-logo img {
+      height: 40px; /* Default height for desktop */
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
     /* Social media and hit song button styling */
     .social-link {
       color: var(--white);
@@ -159,10 +167,9 @@
         padding: 0.5rem;
       }
 
-      .nav-logo {
+      .nav-logo img {
+        height: 30px; /* Smaller height for mobile */
         margin-bottom: 0.5rem;
-        text-align: center;
-        font-size: 1.25rem;
       }
 
       .nav-links {
@@ -194,8 +201,8 @@
         padding: 1rem;
       }
 
-      .nav-logo {
-        font-size: 1.5rem;
+      .nav-logo img {
+        height: 40px;
       }
 
       .nav-links {
@@ -215,7 +222,9 @@
 <body class="bg-[var(--light-grey)] text-[var(--dark-grey)] font-sans">
   <nav class="bg-[var(--maroon)] text-[var(--white)] fixed w-full z-10 shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 nav-container flex flex-col sm:flex-row justify-between items-center">
-      <h1 class="text-2xl font-bold nav-logo">Drums Jerry Entertainment</h1>
+      <div class="nav-logo">
+        <img src="assets/image.jpg" alt="Drums Jerry Entertainment Logo">
+      </div>
       <div class="nav-links flex flex-row sm:flex-row space-x-4">
         <a href="#" class="nav-button">Home</a>
         <a href="#about" class="nav-button">About</a>
@@ -357,7 +366,7 @@
             <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in a bold feature film.</p>
           </div>
           <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறு�பக்கம்]</span></h3>
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறுபக்கம்]</span></h3>
             <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in an epic cinematic journey.</p>
           </div>
         </div>

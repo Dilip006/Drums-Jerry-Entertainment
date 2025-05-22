@@ -85,18 +85,19 @@
     .space-x-4 > * + * { margin-left: 1rem; }
     .space-x-6 > * + * { margin-left: 1.5rem; }
     .border-b-2 { border-bottom-width: 2px; }
+    .flex-wrap { flex-wrap: wrap; }
 
     /* Navigation button styling */
     .nav-button {
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.75rem;
       background-color: var(--maroon);
       color: var(--white);
       border: 1px solid var(--white);
       border-radius: 0.25rem;
       text-decoration: none;
       transition: background-color 150ms ease-in-out;
-      width: 100%;
       text-align: center;
+      font-size: 0.9rem;
     }
 
     .nav-button:hover {
@@ -155,28 +156,33 @@
       .nav-container {
         flex-direction: column;
         align-items: center;
-        padding: 1rem;
+        padding: 0.5rem;
       }
 
       .nav-logo {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         text-align: center;
+        font-size: 1.25rem;
       }
 
       .nav-links {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
         width: 100%;
+        gap: 0.5rem;
       }
 
       .nav-button {
-        margin-bottom: 0.5rem;
-        padding: 0.75rem;
-        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+        min-width: 60px;
+        flex-grow: 1;
       }
 
       .space-x-4 > * + * {
-        margin-left: 0;
+        margin-left: 0.5rem;
       }
     }
 
@@ -185,23 +191,32 @@
       .nav-container {
         flex-direction: row;
         justify-content: space-between;
+        padding: 1rem;
+      }
+
+      .nav-logo {
+        font-size: 1.5rem;
       }
 
       .nav-links {
         flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0;
       }
 
       .nav-button {
-        width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        min-width: auto;
       }
     }
   </style>
 </head>
 <body class="bg-[var(--light-grey)] text-[var(--dark-grey)] font-sans">
   <nav class="bg-[var(--maroon)] text-[var(--white)] fixed w-full z-10 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 nav-container flex flex-col sm:flex-row justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 nav-container flex flex-col sm:flex-row justify-between items-center">
       <h1 class="text-2xl font-bold nav-logo">Drums Jerry Entertainment</h1>
-      <div class="nav-links flex flex-col sm:flex-row space-x-4 sm:space-x-4">
+      <div class="nav-links flex flex-row sm:flex-row space-x-4">
         <a href="#" class="nav-button">Home</a>
         <a href="#about" class="nav-button">About</a>
         <a href="#music" class="nav-button">Music</a>
@@ -342,7 +357,7 @@
             <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in a bold feature film.</p>
           </div>
           <div class="bg-[var(--light-grey)] p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறுபக்கம்]</span></h3>
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறு�பக்கம்]</span></h3>
             <p class="mt-2 text-[var(--dark-grey)]">An upcoming role in an epic cinematic journey.</p>
           </div>
         </div>

@@ -15,7 +15,7 @@
       --dark-grey: #374151;
     }
 
-    /* Tailwind CSS compiled output (subset for this website) */
+    /* Existing CSS retained, only showing relevant updates */
     * {
       margin: 0;
       padding: 0;
@@ -26,6 +26,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
     }
 
+    /* Existing utility classes retained */
     .bg-\[var\(--light-grey\)\] { background-color: var(--light-grey); }
     .bg-\[var\(--white\)\] { background-color: var(--white); }
     .bg-\[var\(--maroon\)\] { background-color: var(--maroon); }
@@ -85,7 +86,6 @@
     .space-x-6 > * + * { margin-left: 1.5rem; }
     .border-b-2 { border-bottom-width: 2px; }
 
-    /* Button styling for navigation links */
     .nav-button {
       padding: 0.5rem 1rem;
       background-color: var(--maroon);
@@ -101,7 +101,6 @@
       color: var(--white);
     }
 
-    /* Social media and hit song button styling */
     .social-link {
       color: var(--white);
       text-decoration: none;
@@ -145,21 +144,53 @@
       .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
       .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
+
+    /* Updated mobile navigation styles */
+    @media (max-width: 639px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .nav-button {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
+
+      .space-x-4 > * + * {
+        margin-left: 0;
+      }
+    }
   </style>
 </head>
 <body class="bg-[var(--light-grey)] text-[var(--dark-grey)] font-sans">
   <nav class="bg-[var(--maroon)] text-[var(--white)] fixed w-full z-10 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 nav-container flex justify-between items-center">
       <h1 class="text-2xl font-bold">Drums Jerry Entertainment</h1>
-      <div class="space-x-4">
+      <div class="nav-links space-x-4 flex">
+        <a href="#" class="nav-button">Home</a>
         <a href="#about" class="nav-button">About</a>
         <a href="#music" class="nav-button">Music</a>
         <a href="#films" class="nav-button">Films</a>
         <a href="#events" class="nav-button">Events</a>
         <a href="#performance" class="nav-button">Performance</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
+  <!-- Rest of the HTML remains unchanged -->
   <div class="pt-16">
     <header class="bg-[var(--black)] text-[var(--white)] py-20 text-center">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Drums Jerry Entertainment</h1>
@@ -178,6 +209,7 @@
       </div>
     </section>
 
+    <!-- Remaining sections (Music, Films, Events, Performance, Connect, Footer) unchanged -->
     <section id="music" class="bg-[var(--white)] py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 border-b-2 border-[var(--maroon)] pb-2">Music Production</h2>

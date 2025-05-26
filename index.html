@@ -4,129 +4,112 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drums Jerry Entertainment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --deep-blue: #1E3A8A;
-      --gold: #D4AF37;
+      --maroon: #800000;
+      --light-grey: #D1D5DB;
       --white: #FFFFFF;
-      --light-gray: #F3F4F6;
-      --gradient: linear-gradient(135deg, #1E3A8A, #3B82F6);
+      --brown: #8B4513;
+      --red: #FF0000;
+      --black: #1A1A1A;
+      --dark-grey: #374151;
+      --gradient: linear-gradient(135deg, #800000, #FF0000);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Raleway', sans-serif;
-      background-color: var(--light-gray);
-      color: var(--deep-blue);
-      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--black);
+      color: var(--dark-grey);
     }
 
-    /* Utility Classes */
-    .text-center { text-align: center; }
-    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-    .px-4 { padding-left: 1rem; padding-right: 1rem; }
-    .mb-4 { margin-bottom: 1rem; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .mb-8 { margin-bottom: 2rem; }
-    .mt-4 { margin-top: 1rem; }
-    .max-w-5xl { max-width: 64rem; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .w-full { width: 100%; }
-    .flex { display: flex; }
-    .justify-center { justify-content: center; }
-    .items-center { align-items: center; }
-    .space-x-4 > * + * { margin-left: 1rem; }
+    /* Utility classes */
+    .bg-\[var\(--light-grey\)\] { background-color: var(--light-grey); }
+    .bg-\[var\(--white\)\] { background-color: var(--white); }
+    .bg-\[var\(--maroon\)\] { background-color: var(--maroon); }
+    .bg-\[var\(--black\)\] { background-color: var(--black); }
+    .text-\[var\(--dark-grey\)\] { color: var(--dark-grey); }
+    .text-\[var\(--white\)\] { color: var(--white); }
+    .text-\[var\(--maroon\)\] { color: var(--maroon); }
+    .text-\[var\(--brown\)\] { color: var(--brown); }
+    .text-\[var\(--red\)\] { color: var(--red); }
+    .border-\[var\(--maroon\)\] { border-color: var(--maroon); }
+
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
     .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
     .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
     .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
     .font-bold { font-weight: 700; }
     .font-semibold { font-weight: 600; }
     .font-light { font-weight: 300; }
+    .text-center { text-align: center; }
+
+    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .pb-2 { padding-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+
+    .max-w-7xl { max-width: 80rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .w-full { width: 100%; }
+
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .gap-6 { gap: 1.5rem; }
+    .p-6 { padding: 1.5rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    .hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
     .transition-all { transition: all 0.3s ease; }
 
+    .fixed { position: fixed; }
+    .z-10 { z-index: 10; }
+    .flex { display: flex; }
+    .justify-center { justify-content: center; }
+    .items-center { align-items: center; }
+    .space-x-4 > * + * { margin-left: 1rem; }
+    .space-x-6 > * + * { margin-left: 1.5rem; }
+    .flex-wrap { flex-wrap: wrap; }
+
     /* Navigation */
-    .nav-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 200px;
-      background: var(--deep-blue);
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-      z-index: 30;
+    nav {
+      background: transparent;
+      transition: background 0.3s ease;
     }
 
-    .nav-container.open {
-      transform: translateX(0);
+    nav.scrolled {
+      background: var(--maroon);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
-    .nav-links {
-      flex-direction: column;
-      padding: 2rem;
-      height: 100%;
-      justify-content: center;
-    }
-
-    .nav-links a {
+    .nav-button {
+      padding: 0.5rem 1rem;
       color: var(--white);
       text-decoration: none;
-      font-size: 1.1rem;
       font-weight: 600;
-      padding: 0.75rem 0;
-      display: block;
+      border-radius: 0.25rem;
       transition: all 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: var(--gold);
-      padding-left: 0.5rem;
-    }
-
-    .nav-toggle {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      background: var(--deep-blue);
-      color: var(--white);
-      padding: 0.5rem;
-      border: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      z-index: 40;
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .nav-toggle {
-        display: block;
-      }
-
-      .nav-container {
-        transform: translateX(-100%);
-      }
-
-      .nav-container.open {
-        transform: translateX(0);
-      }
-    }
-
-    @media (min-width: 769px) {
-      .nav-container {
-        transform: translateX(0);
-      }
-
-      .nav-links a {
-        font-size: 1.2rem;
-      }
+    .nav-button:hover {
+      background: var(--red);
+      transform: translateY(-2px);
     }
 
     /* Hero Section */
@@ -138,42 +121,24 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: var(--white);
-      padding: 0 1rem;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero img {
       height: 120px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       animation: fadeIn 1s ease-in;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      display: inline-block;
-      border-right: 3px solid var(--gold);
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+      color: var(--white);
+      animation: fadeIn 1.5s ease-in;
     }
 
     .hero p {
-      font-size: 1.25rem;
-      font-weight: 300;
-      max-width: 600px;
+      color: var(--light-grey);
       animation: fadeIn 2s ease-in;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: var(--gold); }
     }
 
     @keyframes fadeIn {
@@ -181,335 +146,284 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 1.75rem;
+    /* Section Cards */
+    .card {
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 200px;
+      background: var(--light-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-grey);
+      font-size: 1.2rem;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    /* Social Links */
+    .social-link {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .social-link:hover {
+      color: var(--red);
+    }
+
+    .social-icon {
+      margin-right: 0.5rem;
+    }
+
+    /* Media Queries */
+    @media (min-width: 640px) {
+      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    @media (min-width: 768px) {
+      .md\:text-5xl { font-size: 3rem; line-height: 1; }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 639px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
       }
 
-      .hero p {
-        font-size: 1rem;
+      .nav-button {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
       }
 
       .hero img {
         height: 80px;
       }
     }
-
-    /* Main Content */
-    .main-content {
-      margin-left: 0;
-      padding: 2rem;
-      transition: margin-left 0.3s ease;
-    }
-
-    @media (min-width: 769px) {
-      .main-content {
-        margin-left: 200px;
-      }
-    }
-
-    /* Sections */
-    section {
-      background: var(--white);
-      border-radius: 1rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-title {
-      color: var(--deep-blue);
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      width: 50%;
-      height: 3px;
-      background: var(--gold);
-      bottom: -0.5rem;
-      left: 0;
-    }
-
-    /* Collapsible Sections */
-    .collapsible {
-      cursor: pointer;
-      padding: 1rem;
-      background: var(--light-gray);
-      border-radius: 0.5rem;
-      margin-bottom: 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .collapsible:hover {
-      background: var(--deep-blue);
-      color: var(--white);
-    }
-
-    .collapsible-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 1rem;
-    }
-
-    .collapsible-content.open {
-      max-height: 1000px;
-      padding: 1rem;
-    }
-
-    .collapsible-item {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border-left: 3px solid var(--gold);
-    }
-
-    /* Connect Section */
-    .connect-bar {
-      background: var(--deep-blue);
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      color: var(--gold);
-      transform: scale(1.1);
-    }
-
-    .social-link svg {
-      margin-right: 0.5rem;
-    }
-
-    .cta-button {
-      background: var(--gold);
-      color: var(--deep-blue);
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background: var(--deep-blue);
-      color: var(--gold);
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--gradient);
-      color: var(--white);
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    footer a {
-      color: var(--gold);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
-  <button class="nav-toggle" onclick="toggleNav()">☰</button>
-  <nav class="nav-container" id="nav">
-    <div class="nav-links">
-      <a href="#home" onclick="toggleNav()">Home</a>
-      <a href="#about" onclick="toggleNav()">About</a>
-      <a href="#music" onclick="toggleNav()">Music</a>
-      <a href="#films" onclick="toggleNav()">Films</a>
-      <a href="#events" onclick="toggleNav()">Events</a>
+  <nav class="fixed w-full z-10 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="nav-links flex justify-center space-x-4">
+        <a href="#" class="nav-button">Home</a>
+        <a href="#about" class="nav-button">About</a>
+        <a href="#music" class="nav-button">Music</a>
+        <a href="#films" class="nav-button">Films</a>
+        <a href="#events" class="nav-button">Events</a>
+      </div>
     </div>
   </nav>
 
-  <div class="main-content">
-    <section class="hero" id="home">
-      <img src="image.jpg" alt="Drums Jerry Entertainment Logo">
-      <h1>Welcome to Drums Jerry Entertainment</h1>
-      <p>Celebrating Tamil Culture through Music, Film, and Performance Arts</p>
-    </section>
+  <section class="hero">
+    <img src="image.jpg" alt="Drums Jerry Entertainment Logo">
+    <h1 class="text-4xl md:text-5xl font-bold mb-2">Welcome to Drums Jerry Entertainment</h1>
+    <p class="text-xl max-w-3xl mx-auto">Celebrating Tamil Culture through Music, Film, and Performance Arts</p>
+  </section>
 
-    <section id="about">
-      <h2 class="section-title">About Us</h2>
-      <p class="text-lg">
-        Drums Jerry Entertainment is a multidisciplinary creative house specializing in music production, film, short films, live events, and performance arts. Founded by Glady Gerad, an accomplished entrepreneur with over 18 years of industry experience, our identity is rooted in innovation, authenticity, and the celebration of Tamil culture.
-      </p>
-      <p class="text-lg mt-4">
-        Beyond content creation, we are passionate about identifying and nurturing new talents. Through our productions and events, we actively provide opportunities for emerging artists, musicians, and performers to showcase their abilities and build their careers. We believe in storytelling that uplifts voices, empowers communities, and preserves cultural heritage through modern artistic expression.
-      </p>
-    </section>
+  <section id="about" class="bg-[var(--black)] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 text-center">About Us</h2>
+      <div class="max-w-3xl mx-auto text-[var(--light-grey)] text-lg text-center">
+        <p class="mb-6">
+          Drums Jerry Entertainment is a multidisciplinary creative house specializing in music production, film, short films, live events, and performance arts. Founded by Glady Gerad, an accomplished entrepreneur with over 18 years of industry experience, our identity is rooted in innovation, authenticity, and the celebration of Tamil culture.
+        </p>
+        <p>
+          Beyond content creation, we are passionate about identifying and nurturing new talents. Through our productions and events, we actively provide opportunities for emerging artists, musicians, and performers to showcase their abilities and build their careers.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <section id="music">
-      <h2 class="section-title">Music Production</h2>
-      <p class="text-lg mb-6">We produce original soundtracks that blend cultural richness with modern sound design.</p>
-      <div class="collapsible" onclick="toggleCollapsible(this)">
-        <h3 class="text-xl font-semibold">Our Tracks</h3>
+  <section id="music" class="bg-[var(--black)] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 text-center">Music Production</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card">
+          <div class="card-image">Image Placeholder</div>
+          <div class="card-content">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Farmer <span class="text-[var(--dark-grey)]">[விவசாயி]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A heartfelt tribute to the backbone of our society.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">Image Placeholder</div>
+          <div class="card-content">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Winning Farmer <span class="text-[var(--dark-grey)]">[வெல்லப்போறான் விவசாயி]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">An inspiring anthem of triumph and resilience.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">Image Placeholder</div>
+          <div class="card-content">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">The Matchless One <span class="text-[var(--dark-grey)]">[ஈடற்றவர்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A powerful track celebrating uniqueness.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">Image Placeholder</div>
+          <div class="card-content">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Relationships <span class="text-[var(--dark-grey)]">[உறவுகள்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">An upcoming 7-track album exploring human connections.</p>
+          </div>
+        </div>
       </div>
-      <div class="collapsible-content">
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">The Farmer [விவசாயி]</h4>
-          <p>A heartfelt tribute to the backbone of our society.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">The Winning Farmer [வெல்லப்போறான் விவசாயி]</h4>
-          <p>An inspiring anthem of triumph and resilience.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">The Matchless One [ஈடற்றவர்]</h4>
-          <p>A powerful track celebrating uniqueness.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Relationships [உறவுகள்]</h4>
-          <p>An upcoming 7-track album exploring human connections.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="films">
-      <h2 class="section-title">Film Production</h2>
-      <div class="collapsible" onclick="toggleCollapsible(this)">
-        <h3 class="text-xl font-semibold">Short Films</h3>
+  <section id="films" class="bg-[var(--black)] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 text-center">Film Production</h2>
+      <div class="mb-12">
+        <h3 class="text-2xl font-semibold text-[var(--brown)] mb-4 text-center">Short Films</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">As It Is – Part 1 & 2 <span class="text-[var(--dark-grey)]">[உள்ளதை உள்ளபடி]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A raw exploration of truth and reality.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">This Shore, That Shore is Greener <span class="text-[var(--dark-grey)]">[இக்கரைக்கு அக்கரை பச்சை]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A story of longing and perspective.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Election is Coming <span class="text-[var(--dark-grey)]">[தேர்தல் வருகிறது]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A satirical take on political anticipation.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Saurashtram Wedding <span class="text-[var(--dark-grey)]">[செளரசக்கத்தின் திருமணம்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A vibrant cultural celebration.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Mismatched Ringtone <span class="text-[var(--dark-grey)]">[பொருந்தா ரெலிவோன்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A humorous take on modern disconnects.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">War Zone <span class="text-[var(--dark-grey)]">[போர்நிலத்தான்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A gripping tale of conflict and survival.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="collapsible-content">
-        <p class="text-lg mb-4">Our short films capture powerful human stories, rooted in emotion and social relevance.</p>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">As It Is – Part 1 & 2 [உள்ளதை உள்ளபடி]</h4>
-          <p>A raw exploration of truth and reality.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">This Shore, That Shore is Greener [இக்கரைக்கு அக்கரை பச்சை]</h4>
-          <p>A story of longing and perspective.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Election is Coming [தேர்தல் வருகிறது]</h4>
-          <p>A satirical take on political anticipation.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Saurashtram Wedding [செளரசக்கத்தின் திருமணம்]</h4>
-          <p>A vibrant cultural celebration.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Mismatched Ringtone [பொருந்தா ரெலிவோன்]</h4>
-          <p>A humorous take on modern disconnects.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">War Zone [போர்நிலத்தான்]</h4>
-          <p>A gripping tale of conflict and survival.</p>
+      <div>
+        <h3 class="text-2xl font-semibold text-[var(--brown)] mb-4 text-center">Feature Films (Upcoming)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">The Ruthless One <span class="text-[var(--dark-grey)]">[கொடியோர்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">A bold narrative of power and morality.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">Image Placeholder</div>
+            <div class="card-content">
+              <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறுபக்கம்]</span></h3>
+              <p class="mt-2 text-[var(--dark-grey)]">An epic tale of journey and discovery.</p>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="collapsible mt-4" onclick="toggleCollapsible(this)">
-        <h3 class="text-xl font-semibold">Feature Films (Upcoming)</h3>
-      </div>
-      <div class="collapsible-content">
-        <p class="text-lg mb-4">We are developing impactful Tamil cinema with bold themes and strong storytelling.</p>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">The Ruthless One [கொடியோர்]</h4>
-          <p>A bold narrative of power and morality.</p>
+  <section id="events" class="bg-[var(--black)] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-[var(--maroon)] mb-8 text-center">Event Management</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card">
+          <div class="card-image">Image Placeholder</div>
+          <div class="card-content">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Long Live Tamil <span class="text-[var(--dark-grey)]">[வாழ்க தமிழ்]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A celebration of Tamil language and culture.</p>
+          </div>
         </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Beyond the Sea [கடலின் மறு�pக்கம்]</h4>
-          <p>An epic tale of journey and discovery.</p>
+        <div class="card">
+          <div class="card-image">Image Placeholder</div>
+          <div class="card-content">
+            <h3 class="text-xl font-semibold text-[var(--brown)]">Tamil Fest <span class="text-[var(--dark-grey)]">[தமிழர் திருவிழா]</span></h3>
+            <p class="mt-2 text-[var(--dark-grey)]">A grand festival showcasing Tamil traditions.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="events">
-      <h2 class="section-title">Event Management</h2>
-      <p class="text-lg mb-6">We organize vibrant cultural events that bring people together and highlight Tamil heritage.</p>
-      <div class="collapsible" onclick="toggleCollapsible(this)">
-        <h3 class="text-xl font-semibold">Our Events</h3>
-      </div>
-      <div class="collapsible-content">
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Long Live Tamil [வாழ்க தமிழ்]</h4>
-          <p>A celebration of Tamil language and culture.</p>
-        </div>
-        <div class="collapsible-item">
-          <h4 class="text-lg font-semibold">Tamil Fest [தமிழர் திருவிழா]</h4>
-          <p>A grand festival showcasing Tamil traditions.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="connect-bar" id="connect">
-      <h2 class="text-2xl font-bold text-[var(--white)] mb-4">Connect With Us</h2>
-      <div class="flex space-x-4">
+  <section id="connect" class="bg-[var(--maroon)] text-[var(--white)] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-8">Connect With Us</h2>
+      <div class="flex justify-center space-x-6 mb-6">
         <a href="https://www.youtube.com/channel/UCoeCMF8LCIOdESv17gfWpJA" class="social-link" target="_blank" rel="noopener noreferrer">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
+          <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
             <path d="M23.5 6.2C23.2 5.1 22.3 4.2 21.2 3.9C19.3 3.3 12 3.3 12 3.3C12 3.3 4.7 3.3 2.8 3.9C1.7 4.2 0.8 5.1 0.5 6.2C0 8.1 0 12 0 12C0 12 0 15.9 0.5 17.8C0.8 18.9 1.7 19.8 2.8 20.1C4.7 20.7 12 20.7 12 20.7C12 20.7 19.3 20.7 21.2 20.1C22.3 19.8 23.2 18.9 23.5 17.8C24 15.9 24 12 24 12C24 12 24 8.1 23.5 6.2ZM9.6 16.2V7.8L16.2 12L9.6 16.2Z"/>
           </svg>
           YouTube
         </a>
         <a href="https://www.facebook.com/jerry.gerad.3/" class="social-link" target="_blank" rel="noopener noreferrer">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
+          <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
             <path d="M24 12C24 5.4 18.6 0 12 0C5.4 0 0 5.4 0 12C0 17.7 4.1 22.5 9.6 23.7V15.3H6.9V12H9.6V9.6C9.6 6.9 11.4 5.1 13.8 5.1C14.9 5.1 16.2 5.4 16.2 5.4V8.4H14.7C13.5 8.4 13.2 9.3 13.2 10.2V12H16.2L15.6 15.3H13.2V23.7C18.6 22.5 24 17.7 24 12Z"/>
           </svg>
           Facebook
         </a>
       </div>
-      <a href="https://www.youtube.com/watch?v=nUqE-mrUhx4" class="cta-button" target="_blank" rel="noopener noreferrer">Listen to Our Current Hit Song</a>
-    </section>
-  </div>
+      <a href="https://www.youtube.com/watch?v=nUqE-mrUhx4" class="text-[var(--white)] border border-[var(--white)] px-4 py-2 rounded-lg hover:bg-[var(--red)] transition-all" target="_blank" rel="noopener noreferrer">Listen to Our Current Hit Song</a>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 Drums Jerry Entertainment. All rights reserved.</p>
-    <p class="mt-2">Contact: <a href="mailto:info@drumsjerry.com">info@drumsjerry.com</a></p>
+  <footer class="bg-[var(--maroon)] text-[var(--white)] py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p>© 2025 Drums Jerry Entertainment. All rights reserved.</p>
+      <p class="mt-2">Contact: info@drumsjerry.com</p>
+    </div>
   </footer>
 
   <script>
-    // Toggle Navigation on Mobile
-    function toggleNav() {
-      const nav = document.getElementById('nav');
-      nav.classList.toggle('open');
-    }
-
-    // Toggle Collapsible Sections
-    function toggleCollapsible(element) {
-      const content = element.nextElementSibling;
-      content.classList.toggle('open');
-    }
-
-    // Scroll Reveal Animation
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => observer.observe(section));
+    // Add scrolled class to nav on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
   </script>
 </body>
-</html>
+</html>v

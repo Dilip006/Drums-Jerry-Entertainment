@@ -4,18 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drums Jerry Entertainment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --maroon: #800000;
-      --light-grey: #D1D5DB;
+      --deep-blue: #1E3A8A;
+      --gold: #D4AF37;
       --white: #FFFFFF;
-      --brown: #8B4513;
-      --red: #FF0000;
-      --black: #0A0A0A;
-      --dark-grey: #374151;
-      --gradient-dark: linear-gradient(135deg, #0A0A0A, #1A1A1A);
-      --gradient-hero: linear-gradient(135deg, rgba(128, 0, 0, 0.8), rgba(255, 0, 0, 0.8));
+      --light-gray: #F3F4F6;
+      --gradient: linear-gradient(135deg, #1E3A8A, #3B82F6);
     }
 
     * {
@@ -26,142 +22,158 @@
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--black);
-      color: var(--dark-grey);
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--deep-blue);
+      overflow-x: hidden;
     }
 
-    /* Utility classes */
-    .bg-\[var\(--light-grey\)\] { background-color: var(--light-grey); }
-    .bg-\[var\(--white\)\] { background-color: var(--white); }
-    .bg-\[var\(--maroon\)\] { background-color: var(--maroon); }
-    .bg-\[var\(--black\)\] { background-color: var(--black); }
-    .text-\[var\(--dark-grey\)\] { color: var(--dark-grey); }
-    .text-\[var\(--white\)\] { color: var(--white); }
-    .text-\[var\(--maroon\)\] { color: var(--maroon); }
-    .text-\[var\(--brown\)\] { color: var(--brown); }
-    .text-\[var\(--red\)\] { color: var(--red); }
-    .border-\[var\(--maroon\)\] { border-color: var(--maroon); }
-
-    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    /* Utility Classes */
+    .text-center { text-align: center; }
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mt-4 { margin-top: 1rem; }
+    .max-w-5xl { max-width: 64rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .w-full { width: 100%; }
+    .flex { display: flex; }
+    .justify-center { justify-content: center; }
+    .items-center { align-items: center; }
+    .space-x-4 > * + * { margin-left: 1rem; }
     .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
     .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
     .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
     .font-bold { font-weight: 700; }
     .font-semibold { font-weight: 600; }
     .font-light { font-weight: 300; }
-    .text-center { text-align: center; }
-
-    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-    .px-4 { padding-left: 1rem; padding-right: 1rem; }
-    .pb-2 { padding-bottom: 0.5rem; }
-    .mb-2 { margin-bottom: 0.5rem; }
-    .mb-4 { margin-bottom: 1rem; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .mb-8 { margin-bottom: 2rem; }
-    .mb-12 { margin-bottom: 3rem; }
-    .mt-2 { margin-top: 0.5rem; }
-    .mt-4 { margin-top: 1rem; }
-
-    .max-w-7xl { max-width: 80rem; }
-    .max-w-3xl { max-width: 48rem; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .w-full { width: 100%; }
-
-    .grid { display: grid; }
-    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-    .gap-6 { gap: 1.5rem; }
-    .p-6 { padding: 1.5rem; }
-    .rounded-lg { border-radius: 0.5rem; }
-    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3); }
-    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); }
-    .hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5); }
     .transition-all { transition: all 0.3s ease; }
 
-    .fixed { position: fixed; }
-    .sticky { position: sticky; top: 0; }
-    .z-10 { z-index: 10; }
-    .z-20 { z-index: 20; }
-    .flex { display: flex; }
-    .justify-center { justify-content: center; }
-    .items-center { align-items: center; }
-    .space-x-4 > * + * { margin-left: 1rem; }
-    .space-x-6 > * + * { margin-left: 1.5rem; }
-    .flex-wrap { flex-wrap: wrap; }
-
     /* Navigation */
-    nav {
-      background: rgba(10, 10, 10, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      z-index: 20;
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 200px;
+      background: var(--deep-blue);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 30;
     }
 
-    .nav-button {
-      padding: 0.5rem 1rem;
+    .nav-container.open {
+      transform: translateX(0);
+    }
+
+    .nav-links {
+      flex-direction: column;
+      padding: 2rem;
+      height: 100%;
+      justify-content: center;
+    }
+
+    .nav-links a {
       color: var(--white);
       text-decoration: none;
+      font-size: 1.1rem;
       font-weight: 600;
-      border-radius: 0.25rem;
+      padding: 0.75rem 0;
+      display: block;
       transition: all 0.3s ease;
-      position: relative;
     }
 
-    .nav-button:hover {
-      color: var(--red);
-      transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    .nav-links a:hover {
+      color: var(--gold);
+      padding-left: 0.5rem;
     }
 
-    .nav-button::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background: var(--red);
-      transition: width 0.3s ease;
+    .nav-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      background: var(--deep-blue);
+      color: var(--white);
+      padding: 0.5rem;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      z-index: 40;
+      display: none;
     }
 
-    .nav-button:hover::after {
-      width: 100%;
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-container {
+        transform: translateX(-100%);
+      }
+
+      .nav-container.open {
+        transform: translateX(0);
+      }
+    }
+
+    @media (min-width: 769px) {
+      .nav-container {
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 1.2rem;
+      }
     }
 
     /* Hero Section */
     .hero {
       height: 100vh;
-      background: var(--gradient-hero), url('https://via.placeholder.com/1920x1080?text=Hero+Background') center/cover no-repeat;
+      background: var(--gradient);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      position: relative;
+      color: var(--white);
+      padding: 0 1rem;
     }
 
     .hero img {
-      height: 150px;
-      margin-bottom: 1rem;
-      animation: zoomIn 1s ease-in;
+      height: 120px;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1s ease-in;
     }
 
     .hero h1 {
-      color: var(--white);
-      animation: fadeIn 1.5s ease-in;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: inline-block;
+      border-right: 3px solid var(--gold);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
     }
 
     .hero p {
-      color: var(--light-grey);
+      font-size: 1.25rem;
+      font-weight: 300;
+      max-width: 600px;
       animation: fadeIn 2s ease-in;
     }
 
-    @keyframes zoomIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--gold); }
     }
 
     @keyframes fadeIn {
@@ -169,363 +181,335 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Section Styling */
-    section {
-      background: var(--gradient-dark);
-    }
-
-    .section-title {
-      color: var(--maroon);
-      text-shadow: 0 0 5px rgba(128, 0, 0, 0.5);
-    }
-
-    /* Cards */
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 1rem;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      position: relative;
-      border: 1px solid rgba(255, 0, 0, 0.2);
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-      border-color: var(--red);
-    }
-
-    .card-image {
-      width: 100%;
-      height: 200px;
-      background: var(--light-grey);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--dark-grey);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover .card-image {
-      filter: brightness(1.1);
-    }
-
-    .card-content {
-      padding: 1.5rem;
-      background: var(--white);
-    }
-
-    .card h3 {
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-
-    .card h3::after {
-      content: '';
-      position: absolute;
-      width: 50px;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background: var(--red);
-    }
-
-    /* Social Links */
-    .social-link {
-      color: var(--white);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      font-size: 1.1rem;
-    }
-
-    .social-link:hover {
-      color: var(--red);
-      transform: translateX(5px);
-    }
-
-    .social-icon {
-      margin-right: 0.5rem;
-    }
-
-    /* Contact Form Placeholder */
-    .contact-form-placeholder {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      color: var(--light-grey);
-      text-align: center;
-    }
-
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--red);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 1.2rem;
-      display: none;
-      transition: all 0.3s ease;
-      z-index: 20;
-    }
-
-    .back-to-top:hover {
-      background: var(--maroon);
-      transform: scale(1.1);
-    }
-
-    /* Media Queries */
-    @media (min-width: 640px) {
-      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
-    }
-
-    @media (min-width: 768px) {
-      .md\:text-5xl { font-size: 3rem; line-height: 1; }
-      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    @media (min-width: 1024px) {
-      .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
-      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 639px) {
-      .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .nav-button {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.85rem;
-      }
-
-      .hero img {
-        height: 100px;
-      }
-
+    @media (max-width: 768px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
       }
 
       .hero p {
         font-size: 1rem;
       }
+
+      .hero img {
+        height: 80px;
+      }
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 0;
+      padding: 2rem;
+      transition: margin-left 0.3s ease;
+    }
+
+    @media (min-width: 769px) {
+      .main-content {
+        margin-left: 200px;
+      }
+    }
+
+    /* Sections */
+    section {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      color: var(--deep-blue);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--gold);
+      bottom: -0.5rem;
+      left: 0;
+    }
+
+    /* Collapsible Sections */
+    .collapsible {
+      cursor: pointer;
+      padding: 1rem;
+      background: var(--light-gray);
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .collapsible:hover {
+      background: var(--deep-blue);
+      color: var(--white);
+    }
+
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 1rem;
+    }
+
+    .collapsible-content.open {
+      max-height: 1000px;
+      padding: 1rem;
+    }
+
+    .collapsible-item {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* Connect Section */
+    .connect-bar {
+      background: var(--deep-blue);
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .social-link svg {
+      margin-right: 0.5rem;
+    }
+
+    .cta-button {
+      background: var(--gold);
+      color: var(--deep-blue);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--deep-blue);
+      color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--gradient);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <nav class="sticky w-full z-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="nav-links flex justify-center space-x-4">
-        <a href="#" class="nav-button">Home</a>
-        <a href="#about" class="nav-button">About</a>
-        <a href="#music" class="nav-button">Music</a>
-        <a href="#films" class="nav-button">Films</a>
-        <a href="#events" class="nav-button">Events</a>
-      </div>
+  <button class="nav-toggle" onclick="toggleNav()">☰</button>
+  <nav class="nav-container" id="nav">
+    <div class="nav-links">
+      <a href="#home" onclick="toggleNav()">Home</a>
+      <a href="#about" onclick="toggleNav()">About</a>
+      <a href="#music" onclick="toggleNav()">Music</a>
+      <a href="#films" onclick="toggleNav()">Films</a>
+      <a href="#events" onclick="toggleNav()">Events</a>
     </div>
   </nav>
 
-  <section class="hero" id="home">
-    <img src="image.jpg" alt="Drums Jerry Entertainment Logo">
-    <h1 class="text-4xl md:text-5xl font-bold mb-2">Welcome to Drums Jerry Entertainment</h1>
-    <p class="text-xl max-w-3xl mx-auto">Celebrating Tamil Culture through Music, Film, and Performance Arts</p>
-  </section>
+  <div class="main-content">
+    <section class="hero" id="home">
+      <img src="image.jpg" alt="Drums Jerry Entertainment Logo">
+      <h1>Welcome to Drums Jerry Entertainment</h1>
+      <p>Celebrating Tamil Culture through Music, Film, and Performance Arts</p>
+    </section>
 
-  <section id="about" class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold section-title mb-8 text-center">About Us</h2>
-      <div class="max-w-3xl mx-auto text-[var(--light-grey)] text-lg text-center">
-        <p class="mb-6">
-          Drums Jerry Entertainment is a multidisciplinary creative house specializing in music production, film, short films, live events, and performance arts. Founded by Glady Gerad, an accomplished entrepreneur with over 18 years of industry experience, our identity is rooted in innovation, authenticity, and the celebration of Tamil culture.
-        </p>
-        <p>
-          Beyond content creation, we are passionate about identifying and nurturing new talents. Through our productions and events, we actively provide opportunities for emerging artists, musicians, and performers to showcase their abilities and build their careers.
-        </p>
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <p class="text-lg">
+        Drums Jerry Entertainment is a multidisciplinary creative house specializing in music production, film, short films, live events, and performance arts. Founded by Glady Gerad, an accomplished entrepreneur with over 18 years of industry experience, our identity is rooted in innovation, authenticity, and the celebration of Tamil culture.
+      </p>
+      <p class="text-lg mt-4">
+        Beyond content creation, we are passionate about identifying and nurturing new talents. Through our productions and events, we actively provide opportunities for emerging artists, musicians, and performers to showcase their abilities and build their careers. We believe in storytelling that uplifts voices, empowers communities, and preserves cultural heritage through modern artistic expression.
+      </p>
+    </section>
+
+    <section id="music">
+      <h2 class="section-title">Music Production</h2>
+      <p class="text-lg mb-6">We produce original soundtracks that blend cultural richness with modern sound design.</p>
+      <div class="collapsible" onclick="toggleCollapsible(this)">
+        <h3 class="text-xl font-semibold">Our Tracks</h3>
       </div>
-    </div>
-  </section>
-
-  <section id="music" class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold section-title mb-8 text-center">Music Production</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card">
-          <div class="card-image">Music Image 1</div>
-          <div class="card-content">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">The Farmer <span class="text-[var(--dark-grey)]">[விவசாயி]</span></h3>
-            <p class="mt-2 text-[var(--dark-grey)]">A heartfelt tribute to the backbone of our society.</p>
-          </div>
+      <div class="collapsible-content">
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">The Farmer [விவசாயி]</h4>
+          <p>A heartfelt tribute to the backbone of our society.</p>
         </div>
-        <div class="card">
-          <div class="card-image">Music Image 2</div>
-          <div class="card-content">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">The Winning Farmer <span class="text-[var(--dark-grey)]">[வெல்லப்போறான் விவசாயி]</span></h3>
-            <p class="mt-2 text-[var(--dark-grey)]">An inspiring anthem of triumph and resilience.</p>
-          </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">The Winning Farmer [வெல்லப்போறான் விவசாயி]</h4>
+          <p>An inspiring anthem of triumph and resilience.</p>
         </div>
-        <div class="card">
-          <div class="card-image">Music Image 3</div>
-          <div class="card-content">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">The Matchless One <span class="text-[var(--dark-grey)]">[ஈடற்றவர்]</span></h3>
-            <p class="mt-2 text-[var(--dark-grey)]">A powerful track celebrating uniqueness.</p>
-          </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">The Matchless One [ஈடற்றவர்]</h4>
+          <p>A powerful track celebrating uniqueness.</p>
         </div>
-        <div class="card">
-          <div class="card-image">Music Image 4</div>
-          <div class="card-content">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">Relationships <span class="text-[var(--dark-grey)]">[உறவுகள்]</span></h3>
-            <p class="mt-2 text-[var(--dark-grey)]">An upcoming 7-track album exploring human connections.</p>
-          </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Relationships [உறவுகள்]</h4>
+          <p>An upcoming 7-track album exploring human connections.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="films" class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold section-title mb-8 text-center">Film Production</h2>
-      <div class="mb-12">
-        <h3 class="text-2xl font-semibold text-[var(--brown)] mb-4 text-center">Short Films</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card">
-            <div class="card-image">Film Image 1</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">As It Is – Part 1 & 2 <span class="text-[var(--dark-grey)]">[உள்ளதை உள்ளபடி]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A raw exploration of truth and reality.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">Film Image 2</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">This Shore, That Shore is Greener <span class="text-[var(--dark-grey)]">[இக்கரைக்கு அக்கரை பச்சை]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A story of longing and perspective.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">Film Image 3</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">Election is Coming <span class="text-[var(--dark-grey)]">[தேர்தல் வருகிறது]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A satirical take on political anticipation.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">Film Image 4</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">Saurashtram Wedding <span class="text-[var(--dark-grey)]">[செளரசக்கத்தின் திருமணம்]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A vibrant cultural celebration.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">Film Image 5</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">Mismatched Ringtone <span class="text-[var(--dark-grey)]">[பொருந்தா ரெலிவோன்]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A humorous take on modern disconnects.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">Film Image 6</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">War Zone <span class="text-[var(--dark-grey)]">[போர்நிலத்தான்]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A gripping tale of conflict and survival.</p>
-            </div>
-          </div>
+    <section id="films">
+      <h2 class="section-title">Film Production</h2>
+      <div class="collapsible" onclick="toggleCollapsible(this)">
+        <h3 class="text-xl font-semibold">Short Films</h3>
+      </div>
+      <div class="collapsible-content">
+        <p class="text-lg mb-4">Our short films capture powerful human stories, rooted in emotion and social relevance.</p>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">As It Is – Part 1 & 2 [உள்ளதை உள்ளபடி]</h4>
+          <p>A raw exploration of truth and reality.</p>
+        </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">This Shore, That Shore is Greener [இக்கரைக்கு அக்கரை பச்சை]</h4>
+          <p>A story of longing and perspective.</p>
+        </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Election is Coming [தேர்தல் வருகிறது]</h4>
+          <p>A satirical take on political anticipation.</p>
+        </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Saurashtram Wedding [செளரசக்கத்தின் திருமணம்]</h4>
+          <p>A vibrant cultural celebration.</p>
+        </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Mismatched Ringtone [பொருந்தா ரெலிவோன்]</h4>
+          <p>A humorous take on modern disconnects.</p>
+        </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">War Zone [போர்நிலத்தான்]</h4>
+          <p>A gripping tale of conflict and survival.</p>
         </div>
       </div>
-      <div>
-        <h3 class="text-2xl font-semibold text-[var(--brown)] mb-4 text-center">Feature Films (Upcoming)</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="card">
-            <div class="card-image">Feature Film Image 1</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">The Ruthless One <span class="text-[var(--dark-grey)]">[கொடியோர்]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">A bold narrative of power and morality.</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-image">Feature Film Image 2</div>
-            <div class="card-content">
-              <h3 class="text-xl font-semibold text-[var(--brown)]">Beyond the Sea <span class="text-[var(--dark-grey)]">[கடலின் மறுபக்கம்]</span></h3>
-              <p class="mt-2 text-[var(--dark-grey)]">An epic tale of journey and discovery.</p>
-            </div>
-          </div>
+
+      <div class="collapsible mt-4" onclick="toggleCollapsible(this)">
+        <h3 class="text-xl font-semibold">Feature Films (Upcoming)</h3>
+      </div>
+      <div class="collapsible-content">
+        <p class="text-lg mb-4">We are developing impactful Tamil cinema with bold themes and strong storytelling.</p>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">The Ruthless One [கொடியோர்]</h4>
+          <p>A bold narrative of power and morality.</p>
+        </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Beyond the Sea [கடலின் மறு�pக்கம்]</h4>
+          <p>An epic tale of journey and discovery.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="events" class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold section-title mb-8 text-center">Event Management</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card">
-          <div class="card-image">Event Image 1</div>
-          <div class="card-content">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">Long Live Tamil <span class="text-[var(--dark-grey)]">[வாழ்க தமிழ்]</span></h3>
-            <p class="mt-2 text-[var(--dark-grey)]">A celebration of Tamil language and culture.</p>
-          </div>
+    <section id="events">
+      <h2 class="section-title">Event Management</h2>
+      <p class="text-lg mb-6">We organize vibrant cultural events that bring people together and highlight Tamil heritage.</p>
+      <div class="collapsible" onclick="toggleCollapsible(this)">
+        <h3 class="text-xl font-semibold">Our Events</h3>
+      </div>
+      <div class="collapsible-content">
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Long Live Tamil [வாழ்க தமிழ்]</h4>
+          <p>A celebration of Tamil language and culture.</p>
         </div>
-        <div class="card">
-          <div class="card-image">Event Image 2</div>
-          <div class="card-content">
-            <h3 class="text-xl font-semibold text-[var(--brown)]">Tamil Fest <span class="text-[var(--dark-grey)]">[தமிழர் திருவிழா]</span></h3>
-            <p class="mt-2 text-[var(--dark-grey)]">A grand festival showcasing Tamil traditions.</p>
-          </div>
+        <div class="collapsible-item">
+          <h4 class="text-lg font-semibold">Tamil Fest [தமிழர் திருவிழா]</h4>
+          <p>A grand festival showcasing Tamil traditions.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="connect" class="bg-[var(--maroon)] text-[var(--white)] py-16">
-    <div class="max-w-7膜auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold mb-8 text-center">Connect With Us</h2>
-      <div class="flex justify-center space-x-6 mb-8">
+    <section class="connect-bar" id="connect">
+      <h2 class="text-2xl font-bold text-[var(--white)] mb-4">Connect With Us</h2>
+      <div class="flex space-x-4">
         <a href="https://www.youtube.com/channel/UCoeCMF8LCIOdESv17gfWpJA" class="social-link" target="_blank" rel="noopener noreferrer">
-          <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
             <path d="M23.5 6.2C23.2 5.1 22.3 4.2 21.2 3.9C19.3 3.3 12 3.3 12 3.3C12 3.3 4.7 3.3 2.8 3.9C1.7 4.2 0.8 5.1 0.5 6.2C0 8.1 0 12 0 12C0 12 0 15.9 0.5 17.8C0.8 18.9 1.7 19.8 2.8 20.1C4.7 20.7 12 20.7 12 20.7C12 20.7 19.3 20.7 21.2 20.1C22.3 19.8 23.2 18.9 23.5 17.8C24 15.9 24 12 24 12C24 12 24 8.1 23.5 6.2ZM9.6 16.2V7.8L16.2 12L9.6 16.2Z"/>
           </svg>
           YouTube
         </a>
         <a href="https://www.facebook.com/jerry.gerad.3/" class="social-link" target="_blank" rel="noopener noreferrer">
-          <svg class="social-icon" width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--white)" xmlns="http://www.w3.org/2000/svg">
             <path d="M24 12C24 5.4 18.6 0 12 0C5.4 0 0 5.4 0 12C0 17.7 4.1 22.5 9.6 23.7V15.3H6.9V12H9.6V9.6C9.6 6.9 11.4 5.1 13.8 5.1C14.9 5.1 16.2 5.4 16.2 5.4V8.4H14.7C13.5 8.4 13.2 9.3 13.2 10.2V12H16.2L15.6 15.3H13.2V23.7C18.6 22.5 24 17.7 24 12Z"/>
           </svg>
           Facebook
         </a>
       </div>
-      <a href="https://www.youtube.com/watch?v=nUqE-mrUhx4" class="text-[var(--white)] border border-[var(--white)] px-4 py-2 rounded-lg hover:bg-[var(--red)] transition-all mb-8 block w-max mx-auto" target="_blank" rel="noopener noreferrer">Listen to Our Current Hit Song</a>
-      <div class="contact-form-placeholder">
-        <p>Contact Form Placeholder - Add your form here</p>
-      </div>
-    </div>
-  </section>
+      <a href="https://www.youtube.com/watch?v=nUqE-mrUhx4" class="cta-button" target="_blank" rel="noopener noreferrer">Listen to Our Current Hit Song</a>
+    </section>
+  </div>
 
-  <footer class="bg-[var(--maroon)] text-[var(--white)] py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p>© 2025 Drums Jerry Entertainment. All rights reserved.</p>
-      <p class="mt-2">Contact: <a href="mailto:info@drumsjerry.com" class="text-[var(--red)] hover:underline">info@drumsjerry.com</a></p>
-    </div>
+  <footer>
+    <p>© 2025 Drums Jerry Entertainment. All rights reserved.</p>
+    <p class="mt-2">Contact: <a href="mailto:info@drumsjerry.com">info@drumsjerry.com</a></p>
   </footer>
 
-  <a href="#home" class="back-to-top" id="back-to-top">↑</a>
-
   <script>
-    // Show/hide back-to-top button on scroll
-    window.addEventListener('scroll', () => {
-      const backToTop = document.getElementById('back-to-top');
-      if (window.scrollY > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
-      }
-    });
+    // Toggle Navigation on Mobile
+    function toggleNav() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('open');
+    }
+
+    // Toggle Collapsible Sections
+    function toggleCollapsible(element) {
+      const content = element.nextElementSibling;
+      content.classList.toggle('open');
+    }
+
+    // Scroll Reveal Animation
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
